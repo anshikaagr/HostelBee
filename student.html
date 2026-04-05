@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HostelBee Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+Hostel<span>Bee</span>
+</div>
+
+<div class="profile">
+<span>Student</span>
+<div class="avatar">S</div>
+</div>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- WELCOME SECTION -->
+
+<div class="welcome">
+
+<h1>Welcome back! 👋</h1>
+
+<p>Here is what is happening in your hostel today.</p>
+
+</div>
+
+
+<!-- EMERGENCY SECTION -->
+
+<div class="emergency-card">
+
+<h3><i class="fa-solid fa-bell"></i> Emergency Assistance</h3>
+
+<p>Quickly alert the warden and management in case of emergencies.</p>
+
+<div class="btn-group">
+
+<button class="fire">
+🔥 Fire Emergency
+</button>
+<a href="student_medical.html">
+<button class="medical">
+🏥 Medical Emergency
+</button>
+</a>
+
+</div>
+
+</div>
+
+
+<!-- GRID LAYOUT -->
+
+<div class="dashboard-grid">
+
+
+<!-- LEFT SIDE -->
+
+<div>
+
+
+<!-- RAISE COMPLAINT -->
+
+<div class="card">
+
+<h3><i class="fa-solid fa-wrench"></i> Raise a Complaint</h3>
+
+<select>
+<option>Select category...</option>
+<option>Electrical</option>
+<option>Plumbing</option>
+<option>Furniture</option>
+<option>Lift</option>
+<option>Cleaning</option>
+</select>
+
+<input type="text" placeholder="Room Number (e.g. A-101)">
+
+<textarea placeholder="Please describe the issue in detail..."></textarea>
+
+<button class="primary-btn">
+Submit Complaint
+</button>
+
+</div>
+
+
+
+<!-- RECENT COMPLAINTS -->
+
+<div class="card">
+
+<h3>Recent Complaints</h3>
+
+
+<div class="complaint">
+
+<div>
+<h4>AC not cooling</h4>
+<p>Electrical - Room A-101</p>
+</div>
+
+<span class="pending">Pending</span>
+
+</div>
+
+
+<div class="complaint">
+
+<div>
+<h4>Leaking tap</h4>
+<p>Plumbing - Room A-101</p>
+</div>
+
+<span class="resolved">Resolved</span>
+
+</div>
+
+</div>
+
+
+
+<!-- MESS REVIEW -->
+
+<div class="card mess">
+
+<h3>🍴 Mess Weekly Review</h3>
+
+<p>How was the food this week?</p>
+
+<div class="stars">
+
+<i class="fa-regular fa-star"></i>
+<i class="fa-regular fa-star"></i>
+<i class="fa-regular fa-star"></i>
+<i class="fa-regular fa-star"></i>
+<i class="fa-regular fa-star"></i>
+
+</div>
+
+<br>
+
+<label>Additional Feedback (Optional)</label>
+
+<textarea placeholder="Any specific suggestions?"></textarea>
+
+<button class="primary-btn">
+Submit Feedback
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<!-- RIGHT SIDE -->
+
+<div>
+
+
+<!-- NOTICE BOARD -->
+
+<div class="card">
+
+<h3><i class="fa-solid fa-clipboard"></i> Notice Board</h3>
+
+
+<div class="notice">
+
+<h4>Pest Control Schedule</h4>
+
+<p>
+Pest control will be done on Sunday from 10 AM to 2 PM.
+Please cooperate.
+</p>
+
+<span>Oct 24, 2026</span>
+
+</div>
+
+
+<div class="notice">
+
+<h4>Late Entry Rules update</h4>
+
+<p>
+The hostel gate will close strictly at 9:30 PM starting next week.
+</p>
+
+<span>Oct 20, 2026</span>
+
+</div>
+
+
+</div>
+
+
+
+<!-- IMPORTANT CONTACTS -->
+
+<div class="card">
+
+<h3><i class="fa-solid fa-phone"></i> Important Contacts</h3>
+
+<div class="contact-grid">
+
+<a href="warden_info.html">
+<div class="contact">
+<i class="fa-solid fa-user"></i>
+<h4>Warden</h4>
+<p>Ext: 101</p>
+</div>
+</a>
+
+
+<div class="contact">
+<i class="fa-solid fa-shield"></i>
+<h4>Security</h4>
+<p>Ext: 102</p>
+</div>
+
+
+<div class="contact">
+<i class="fa-solid fa-ambulance"></i>
+<h4>Ambulance</h4>
+<p>108</p>
+</div>
+
+
+<div class="contact">
+<i class="fa-solid fa-headset"></i>
+<h4>Helpline</h4>
+<p>1098</p>
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

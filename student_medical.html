@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Health & Medical - HostelBee</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#f3effc,#f7f5ff);
+color:#333;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.logo{
+font-size:24px;
+font-weight:600;
+}
+
+.logo span{
+color:#8c7cf6;
+}
+
+.back-btn{
+border:1px solid #cfc8ff;
+padding:10px 20px;
+border-radius:25px;
+color:#7c6cf2;
+text-decoration:none;
+font-weight:500;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:40px;
+}
+
+.title{
+font-size:32px;
+margin-bottom:6px;
+}
+
+.subtitle{
+color:#777;
+margin-bottom:30px;
+}
+
+/* SOS CARD */
+
+.sos{
+background:#f7dada;
+padding:35px;
+border-radius:18px;
+text-align:center;
+margin-bottom:30px;
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.sos h3{
+color:#d1223b;
+margin-bottom:10px;
+}
+
+.sos button{
+margin-top:15px;
+background:#e91e63;
+border:none;
+color:white;
+padding:14px 28px;
+font-size:16px;
+border-radius:30px;
+cursor:pointer;
+font-weight:500;
+box-shadow:0 5px 15px rgba(233,30,99,0.3);
+transition:0.3s;
+}
+
+.sos button:hover{
+transform:scale(1.05);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 8px 25px rgba(0,0,0,0.05);
+margin-bottom:25px;
+}
+
+/* INPUT */
+
+input, textarea{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #ddd;
+margin-bottom:15px;
+font-size:14px;
+}
+
+/* BUTTON */
+
+.btn{
+background:linear-gradient(135deg,#8c7cf6,#a594ff);
+border:none;
+color:white;
+padding:14px;
+border-radius:30px;
+width:100%;
+cursor:pointer;
+font-size:15px;
+}
+
+/* VISITS */
+
+.visit{
+border-left:3px solid #a594ff;
+padding-left:15px;
+margin-bottom:20px;
+}
+
+.visit span{
+font-size:13px;
+color:#777;
+}
+
+/* CONTACT */
+
+.contact{
+display:flex;
+align-items:center;
+gap:15px;
+background:#f6f5ff;
+padding:15px;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.icon{
+width:40px;
+height:40px;
+background:#e8e5ff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.date-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+.grid{
+grid-template-columns:1fr;
+}
+
+.navbar{
+padding:15px 20px;
+}
+
+.container{
+padding:20px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">Hostel<span>Bee</span></div>
+<a class="back-btn" href="student.html">← Back to Dashboard</a>
+</nav>
+
+<div class="container">
+
+<h1 class="title">Health & Medical Center</h1>
+<p class="subtitle">Manage your health requirements efficiently.</p>
+
+<!-- SOS -->
+
+<div class="sos">
+<h3>Immediate Medical Emergency</h3>
+<p>Alert warden instantly</p>
+<button onclick="showPopup('🚑 Medical SOS Sent!')">Trigger SOS</button>
+</div>
+
+<div class="grid">
+
+<!-- LEFT -->
+
+<div>
+
+<!-- INFORM -->
+
+<div class="card">
+<h3>Inform Warden</h3>
+
+<input type="text" id="subject" placeholder="Subject (e.g. Fever)">
+<textarea id="desc" placeholder="Describe condition"></textarea>
+
+<button class="btn" onclick="informWarden()">Send Intimation</button>
+</div>
+
+<!-- MEAL -->
+
+<div class="card">
+<h3>Sick Meal Request (Room Delivery)</h3>
+
+<input type="text" id="issue" placeholder="Health Issue">
+
+<div class="date-grid">
+<input type="date" id="fromDate">
+<input type="date" id="toDate">
+</div>
+
+<textarea placeholder="Dietary Suggestions"></textarea>
+
+<button class="btn" onclick="submitMealRequest()">Request Room Delivery</button>
+</div>
+
+<!-- ADD VISIT -->
+
+<div class="card">
+<h3>Add Medical Visit</h3>
+
+<input type="text" id="visitTitle" placeholder="Visit Title">
+<textarea id="visitDesc" placeholder="Description"></textarea>
+
+<button class="btn" onclick="addVisit()">Add Visit</button>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div>
+
+<!-- VISITS -->
+
+<div class="card">
+<h3>Medical Visits</h3>
+<div id="visitList"></div>
+</div>
+
+<!-- CONTACTS -->
+
+<div class="card">
+<h3>Emergency Contacts</h3>
+
+<div class="contact">
+<div class="icon">🏥</div>
+<div><b>Medical Center</b><br>Ext: 500</div>
+</div>
+
+<div class="contact">
+<div class="icon">🚑</div>
+<div><b>Ambulance</b><br>108</div>
+</div>
+
+<div class="contact">
+<div class="icon">👮</div>
+<div><b>Warden</b><br>Ext: 101</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* POPUP */
+function showPopup(msg){
+let p=document.createElement("div");
+p.innerText=msg;
+p.style="position:fixed;top:20px;right:20px;background:#7c6cf2;color:white;padding:12px 18px;border-radius:10px;";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),3000);
+}
+
+/* INFORM */
+function informWarden(){
+let s=document.getElementById("subject").value;
+let d=document.getElementById("desc").value;
+
+if(!s||!d){
+showPopup("Fill all fields");
+return;
+}
+
+showPopup("Warden informed!");
+}
+
+/* MEAL REQUEST */
+function submitMealRequest(){
+
+let issue=document.getElementById("issue").value;
+let from=document.getElementById("fromDate").value;
+let to=document.getElementById("toDate").value;
+
+if(!issue||!from||!to){
+showPopup("Fill all details");
+return;
+}
+
+let days=Math.ceil((new Date(to)-new Date(from))/(1000*60*60*24))+1;
+
+let req={
+name:"Student Name",
+reg:"21BCE0001",
+room:"A-101",
+days:days
+};
+
+let data=JSON.parse(localStorage.getItem("mealRequests"))||[];
+data.push(req);
+localStorage.setItem("mealRequests",JSON.stringify(data));
+
+showPopup("Meal request sent!");
+}
+
+/* ADD VISIT */
+function addVisit(){
+
+let title=document.getElementById("visitTitle").value;
+let desc=document.getElementById("visitDesc").value;
+
+if(!title||!desc){
+showPopup("Fill all fields");
+return;
+}
+
+let visitHTML=`
+<div class="visit">
+<span>Today</span>
+<h4>${title}</h4>
+<p>${desc}</p>
+</div>
+`;
+
+document.getElementById("visitList").innerHTML+=visitHTML;
+
+let visits=JSON.parse(localStorage.getItem("medicalVisits"))||[];
+visits.push({title,desc});
+localStorage.setItem("medicalVisits",JSON.stringify(visits));
+
+showPopup("Visit added!");
+}
+
+/* LOAD VISITS */
+window.onload=function(){
+
+let visits=JSON.parse(localStorage.getItem("medicalVisits"))||[];
+
+visits.forEach(v=>{
+document.getElementById("visitList").innerHTML+=`
+<div class="visit">
+<span>Previous</span>
+<h4>${v.title}</h4>
+<p>${v.desc}</p>
+</div>
+`;
+});
+
+};
+
+</script>
+
+</body>
+</html>

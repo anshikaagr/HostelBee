@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HostelBee - Smart Hostel Management</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+body{
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+background:linear-gradient(135deg,#f5f3ff,#f8f7ff);
+font-family:'Inter',sans-serif;
+}
+
+/* MAIN BOX */
+
+.login-wrapper{
+display:flex;
+width:1000px;
+max-width:95%;
+min-height:600px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* LEFT BRAND PANEL */
+
+.login-branding{
+flex:1.2;
+background:linear-gradient(135deg,#e9e5ff,#faf5ff);
+padding:60px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.login-branding::before{
+content:'\f1ad';
+font-family:'Font Awesome 6 Free';
+font-weight:900;
+font-size:14rem;
+position:absolute;
+bottom:-20px;
+right:-20px;
+opacity:0.05;
+transform:rotate(-15deg);
+}
+
+.login-branding h1{
+font-size:3.2rem;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.login-branding span{
+color:#7c6cf2;
+}
+
+.login-branding p{
+color:#6b6b6b;
+font-size:1.1rem;
+}
+
+/* RIGHT LOGIN FORM */
+
+.login-form-container{
+flex:1;
+background:white;
+padding:60px 50px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.form-header{
+text-align:center;
+margin-bottom:35px;
+}
+
+.form-header h2{
+font-size:2rem;
+margin-bottom:5px;
+}
+
+.form-header p{
+color:#777;
+}
+
+/* ROLE TOGGLE */
+
+.role-toggle{
+display:flex;
+background:#f1f1f6;
+padding:6px;
+border-radius:30px;
+margin-bottom:25px;
+}
+
+.role-btn{
+flex:1;
+text-align:center;
+padding:12px;
+border-radius:25px;
+cursor:pointer;
+font-weight:600;
+color:#777;
+transition:0.3s;
+}
+
+.role-btn.active{
+background:white;
+color:#7c6cf2;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* INPUTS */
+
+.form-group{
+margin-bottom:20px;
+}
+
+label{
+font-size:14px;
+font-weight:500;
+display:block;
+margin-bottom:6px;
+}
+
+.form-control{
+width:100%;
+padding:12px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:14px;
+outline:none;
+transition:0.2s;
+}
+
+.form-control:focus{
+border-color:#7c6cf2;
+box-shadow:0 0 0 3px rgba(124,108,242,0.1);
+}
+
+/* LOGIN BUTTON */
+
+.btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:30px;
+font-size:15px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#7c6cf2,#a594ff);
+color:white;
+}
+
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.login-wrapper{
+flex-direction:column;
+min-height:auto;
+}
+
+.login-branding{
+padding:40px 20px;
+}
+
+.login-form-container{
+padding:40px 25px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+<div class="login-branding">
+
+<h1>Hostel<span>Bee</span></h1>
+
+<p>Smart living, seamless hostel management with an elegant touch.</p>
+
+</div>
+
+<div class="login-form-container">
+
+<div class="form-header">
+<h2>Welcome Back</h2>
+<p>Please login to your account</p>
+</div>
+
+<div class="role-toggle">
+<div class="role-btn active" onclick="setRole('student')">Student Login</div>
+<div class="role-btn" onclick="setRole('warden')">Warden Login</div>
+</div>
+
+<form id="loginForm" action="student.html" method="GET">
+
+<div class="form-group" id="studentGroup">
+<label>Registration Number</label>
+<input type="text" id="studentInput" class="form-control"
+placeholder="e.g. 21BCE0001" required>
+</div>
+
+<div class="form-group" id="wardenGroup" style="display:none;">
+<label>Employee ID</label>
+<input type="text" id="wardenInput" class="form-control"
+placeholder="e.g. EMP1234">
+</div>
+
+<div class="form-group">
+<label>Password</label>
+<input type="password" class="form-control"
+placeholder="••••••••" required>
+</div>
+
+<button type="submit" class="btn btn-primary" id="loginBtn">
+Login Securely <i class="fa-solid fa-arrow-right"></i>
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+let currentRole = 'student';
+
+function setRole(role){
+
+currentRole = role;
+
+const btns = document.querySelectorAll('.role-btn');
+
+btns.forEach(btn=>btn.classList.remove('active'));
+
+const studentGroup = document.getElementById('studentGroup');
+const wardenGroup = document.getElementById('wardenGroup');
+const studentInput = document.getElementById('studentInput');
+const wardenInput = document.getElementById('wardenInput');
+const form = document.getElementById('loginForm');
+
+if(role === 'student'){
+
+btns[0].classList.add('active');
+
+form.action = 'student_dashboard.html';
+
+studentGroup.style.display='block';
+studentInput.setAttribute('required','true');
+
+wardenGroup.style.display='none';
+wardenInput.removeAttribute('required');
+
+}else{
+
+btns[1].classList.add('active');
+
+form.action = 'warden_dashboard.html';
+
+studentGroup.style.display='none';
+studentInput.removeAttribute('required');
+
+wardenGroup.style.display='block';
+wardenInput.setAttribute('required','true');
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
