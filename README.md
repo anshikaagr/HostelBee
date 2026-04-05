@@ -3,13 +3,13 @@ Hostel Bee is a smart hostel management web platform designed to improve communi
 
 Features:Secure Student Login( using institutional email ID)
 Student Dashboard for:
- Raising complaints (maintenance, hygiene, etc.)
-   Emergency alerts (medical/fire situations)
-   Viewing important hostel notices
+   *Raising complaints (maintenance, hygiene, etc.)
+   *Emergency alerts (medical/fire situations)
+   *Viewing important hostel notices
 Warden Dashboard (planned):
-   Monitor and manage student complaints
-   Respond to emergencies in real-time
-   Broadcast announcements
+   *Monitor and manage student complaints
+   *Respond to emergencies in real-time
+   *Broadcast announcements
 
 Traditional hostel systems lack real-time communication and structured complaint management. Hostel Bee addresses this by:
 
